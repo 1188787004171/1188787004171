@@ -1,4 +1,4 @@
 # Hi there 👋
 
-<!-- waka-readme-stats start -->
-<!-- waka-readme-stats end -->
+<!--START_SECTION:waka-->
+<!--END_SECTION:waka-->
