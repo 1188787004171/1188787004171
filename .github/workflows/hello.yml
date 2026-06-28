@@ -2,6 +2,7 @@ name: Waka Advanced
 
 on:
   schedule:
+    # Runs every 2 hours (Israel time: 08:00 AM to Midnight)
     - cron: '0 5-21/2 * * *'
   workflow_dispatch:
 
@@ -11,4 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: anmol098/waka-readme-stats@master
-        with
+        with:
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHOW_PROJECTS: "True"
+          SHOW_EDITORS: "True"
+          SHOW_COMMIT: "True"
+          SHOW_LANGUAGE_PER_REPO: "True"
+          SHOW_LINES_OF_CODE: "True"
+          SHOW_TIMEZONE: "False"
