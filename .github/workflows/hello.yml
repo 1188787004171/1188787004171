@@ -2,6 +2,7 @@ name: Waka Advanced
 
 on:
   schedule:
+    # Runs every 2 hours (Israel time: 08:00 AM to Midnight)
     - cron: '0 5-21/2 * * *'
   workflow_dispatch:
 
@@ -9,11 +10,6 @@ jobs:
   update-readme:
     name: Update Readme
     runs-on: ubuntu-latest
-    # This block tells GitHub exactly what the robot is allowed to do
-    permissions:
-      contents: write
-      user: read
-
     steps:
       - uses: anmol098/waka-readme-stats@master
         with:
@@ -21,6 +17,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SHOW_PROJECTS: "True"
           SHOW_EDITORS: "True"
+          # Tell it your timezone so it doesn't crash on "GET /user"
+          TIMEZONE: "Asia/Jerusalem"
           SHOW_TIMEZONE: "True"
           SHOW_COMMIT: "True"
           SHOW_LANGUAGE_PER_REPO: "True"
