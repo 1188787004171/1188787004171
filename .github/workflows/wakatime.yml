@@ -1,0 +1,21 @@
+name: Waka README
+on:
+  schedule:
+    # Runs every 2 hours starting at 05:00 UTC (08:00 AM Israel) 
+    # and ending at 21:00 UTC (12:00 AM Israel)
+    - cron: '0 5-21/2 * * *'
+  workflow_dispatch: # Keeps the manual button so you can still test it
+
+jobs:
+  update-readme:
+    name: Update Readme with Metrics
+    runs-on: ubuntu-latest
+    steps:
+      - uses: athul/waka-readme@master
+        with:
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          SHOW_TITLE: true
+          BLOCKS: ⏳
+          TIME_RANGE: last_7_days
+          SHOW_TIME: true
+          SHOW_MASKED_TIME: true
