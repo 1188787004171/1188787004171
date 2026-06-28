@@ -1,25 +1,22 @@
 name: Waka README
 
 on:
-  workflow_dispatch:
   schedule:
     - cron: '0 5-21/2 * * *'
+  workflow_dispatch:
 
 jobs:
   update-readme:
     name: Update Readme
     runs-on: ubuntu-latest
     steps:
-      - uses: anmol098/waka-readme-stats@master
+      - uses: athul/waka-readme@master
         with:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-          GH_TOKEN: ${{ secrets.WAKA_PAT }}
-          SHOW_PROJECTS: "True"
-          SHOW_EDITORS: "True"
-          SHOW_TIMEZONE: "False"
-          SHOW_COMMIT: "True"
-          SHOW_LANGUAGE_PER_REPO: "True"
-          SHOW_LINES_OF_CODE: "True"
-          # Tells the robot exactly who you are since your name is numbers:
-          COMMIT_USERNAME: "1188787004171"
-          COMMIT_EMAIL: "github-actions@github.com"
+          # ADD THIS LINE BELOW:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHOW_TITLE: true
+          BLOCKS: "░▒▓█"
+          TIME_RANGE: last_7_days
+          SHOW_TIME: true
+          SHOW_MASKED_TIME: true
