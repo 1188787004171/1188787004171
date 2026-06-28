@@ -2,8 +2,9 @@ name: Waka Advanced
 
 on:
   schedule:
+    # Runs every 2 hours (Israel time: 08:00 AM to Midnight)
     - cron: '0 5-21/2 * * *'
-  workflow_dispatch:
+  workflow_dispatch: # Manual "Run" button
 
 jobs:
   update-readme:
@@ -13,12 +14,13 @@ jobs:
       - uses: anmol098/waka-readme-stats@master
         with:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # THIS LINE BYPASSES THE 403 ERROR:
-          COMMIT_USERNAME: "1188787004171"
+          # Use the Personal Access Token you created:
+          GH_TOKEN: ${{ secrets.WAKA_PAT }}
+          # Settings to show your project names:
           SHOW_PROJECTS: "True"
           SHOW_EDITORS: "True"
-          SHOW_TIMEZONE: "False"
           SHOW_COMMIT: "True"
           SHOW_LANGUAGE_PER_REPO: "True"
           SHOW_LINES_OF_CODE: "True"
+          # Stop asking GitHub for private data to avoid 403 error:
+          SHOW_TIMEZONE: "False"
