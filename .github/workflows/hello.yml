@@ -1,11 +1,21 @@
-name: Hello World
+name: Waka README
+
 on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
+  schedule:
+    # Runs every 2 hours (Israel time: 08:00 AM to Midnight)
+    - cron: '0 5-21/2 * * *'
+  workflow_dispatch: # This creates the "Run workflow" button
 
 jobs:
-  say-hello:
+  update-readme:
+    name: Update Readme
     runs-on: ubuntu-latest
     steps:
-      - run: echo "GitHub Actions are working!"
+      - uses: athul/waka-readme@master
+        with:
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          SHOW_TITLE: true
+          BLOCKS: ⏳
+          TIME_RANGE: last_7_days
+          SHOW_TIME: true
+          SHOW_MASKED_TIME: true
